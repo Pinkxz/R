@@ -1,5 +1,6 @@
 # Lista - Atividades
 ## Função para facilitar minha vida
+### Aqui nem usei direito, mas vai ser útil na prova :)
 
 install.packages("moments")
 sumario = function(vetor) {
@@ -148,7 +149,7 @@ barplot(freq,
 
 # d)
 # Sim, é possível (essa confesso que peguei do gpt)
-# Q1 (k = 0.25)
+Q1 (k = 0.25)
 k1 <- 0.25 * total  # 1250
 classe_q1 <- which(acumulada >= k1)[1]
 L1 <- lim_inf[classe_q1]
@@ -182,7 +183,7 @@ q3
 # Desvio padrão: Permanece o mesmo, pois as distâncias dos valores em relação à média continuam iguais.
 
 # d) Média: vira 0
-# Mediana: Fica próxima de 0.
+# Mediana: Fica próxima de 0. 
 # DP: fica próximo de 1
 
 
@@ -195,4 +196,115 @@ q3
 
 # Exercício 7
 
-#
+# Usando o coeficiente de variação para fazer a verificação
+
+cv1 = (22/205) * 100 ; cv1
+cv2 = (45/244) * 100 ; cv2
+
+# O grupo dos recrutas é mais homôgeneo, afinal tem uma varição menor.
+
+
+# Exercício 8
+
+# Simulando os dados conforme os parâmetros fornecidos
+
+# Repartição A: média = 33, desvio padrão = 5
+set.seed(1)
+reparticao_a <- rnorm(1000, mean = 33, sd = 5)
+
+# Repartição B: média = 33, desvio padrão = 10
+set.seed(2)
+reparticao_b <- rnorm(1000, mean = 33, sd = 10)
+
+# Plotando histograma e curva de densidade para Repartição A
+hist(reparticao_a, probability = TRUE, col = rgb(1, 0, 0, 0.3),
+     main = "Distribuição de Idades - Repartições A e B",
+     xlab = "Idade", xlim = c(10, 60))
+
+lines(density(reparticao_a), col = "red", lwd = 2)
+
+# Adicionando Repartição B no mesmo gráfico
+hist(reparticao_b, probability = TRUE, col = rgb(0, 0, 1, 0.3), add = TRUE)
+lines(density(reparticao_b), col = "blue", lwd = 2)
+
+legend("topright", legend = c("Repartição A", "Repartição B"),
+       col = c("red", "blue"), lwd = 2, bty = "n")
+
+# Comentando: A região "A", tem uma curva mais estreita e alta, um desvio padrão menor,
+# uma distribuição mais homogenea, menor dispersão e maior concentração ao redor da mediana/média.
+# A região "B": Curva mais larga e baixa. Desvio padrão maior (10).
+# Distribuição mais heterogênea, com idades mais espalhadas. Maior assimetria e presença de valores extremos.
+
+# Exercicío A
+# Região A: média = 20, desvio padrão = 4
+set.seed(3)
+regiao_a <- rnorm(1000, mean = 20, sd = 4)
+
+# Região B: média = 20, desvio padrão = 6
+set.seed(4)
+regiao_b <- rnorm(1000, mean = 20, sd = 6)
+
+# Plotando histograma e curva de densidade para Região A
+hist(regiao_a, probability = TRUE, col = rgb(0, 1, 0, 0.3),
+     main = "Distribuição de Salários - Regiões A e B",
+     xlab = "Salário (salários mínimos)", xlim = c(0, 50))
+
+lines(density(regiao_a), col = "darkgreen", lwd = 2)
+
+# Adicionando Região B
+hist(regiao_b, probability = TRUE, col = rgb(1, 0.5, 0, 0.3), add = TRUE)
+lines(density(regiao_b), col = "orange", lwd = 2)
+
+legend("topright", legend = c("Região A", "Região B"),
+       col = c("darkgreen", "orange"), lwd = 2, bty = "n")
+
+# Comentando:
+# Região A (verde): Curva mais estreita. Desvio padrão menor (4). 
+# Distribuição simétrica e centrada em torno da média de 20. Homogênea, sem muitos valores extremos.
+
+# Região B (laranja): Curva mais achatada e espalhada. Desvio padrão maior (6).
+# Assimetria à direita (maior presença de salários mais altos).
+# Distribuição mais assimétrica e heterogênea.
+
+
+
+# Exercício 10:
+
+# a) As porcentagens revelam o desempenho financeiro (rentabilidade) das ações.
+
+# B)
+A <- c(45, 60, 54, 62, 55, 70, 38, 48, 64, 55, 56, 55, 54, 59, 48, 65, 55, 60)
+B <- c(57, 55, 58, 50, 52, 59, 59, 55, 56, 61, 52, 53, 57, 57, 50, 55, 58, 54, 59, 51, 56)
+
+# Variâncias
+var_a <- var(a)
+var_b <- var(b)
+
+F <- var_a / var_b
+F
+# F é por voltar de 5.85. Logo não é homogenea.
+
+
+# C)
+# Tamanhos das amostras
+nA <- length(A)
+nB <- length(B)
+
+# Médias
+mediaA <- mean(A)
+mediaB <- mean(B)
+
+# Variâncias
+varA <- var(A)
+varB <- var(B)
+
+# Variância combinada
+S2 <- ((nA - 1) * varA + (nB - 1) * varB) / (nA + nB - 2)
+
+# Estatística t
+t <- (mediaA - mediaB) / sqrt(S2 * (1/nA + 1/nB))
+
+# Resultado
+t
+
+# Resposta: os resultados são semelhantes, por volta de 0.16
