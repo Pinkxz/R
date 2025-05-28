@@ -1,3 +1,32 @@
+
+
+a <- c(1,2,3,45,12,45,1,12,54,51,32,51,25,52,4,5,61,51,2,53)
+
+
+
+# Histograma com curva de densidade
+plot_histograma_densidade <- function(vetor, titulo = "Histograma com Densidade") {
+  hist(vetor, probability = TRUE, col = rgb(0.2, 0.4, 0.6, 0.4), 
+       main = titulo, xlab = "Valores", ylab = "Densidade", border = "white")
+  lines(density(vetor), col = "blue", lwd = 2)
+}
+
+# Boxplot simples
+plot_boxplot <- function(vetor, titulo = "Boxplot") {
+  boxplot(vetor, col = "lightgreen", main = titulo, ylab = "Valores")
+}
+
+# Gráfico de densidade
+plot_densidade <- function(vetor, titulo = "Gráfico de Densidade") {
+  plot(density(vetor), main = titulo, xlab = "Valores", ylab = "Densidade", 
+       col = "darkred", lwd = 2)
+  polygon(density(vetor), col = rgb(1, 0, 0, 0.3), border = NA)
+}
+
+plot_histograma_densidade(a)
+plot_boxplot(a)
+plot_densidade(a)
+
 dados_agrupados <- function(intervalos, freq) {
   # Calcular os pontos médios dos intervalos
   ponto_medio <- (intervalos[,1] + intervalos[,2]) / 2
@@ -86,12 +115,20 @@ sumario = function(vetor) {
     curtose = moments::kurtosis(vetor),
     valores_unicos = unique(vetor),
     tabela_frequencia = table(vetor),
+    cv = sd(vetor)/mean(vetor) * 100,
     sumario_R = summary(vetor)
   )
   
   return(resumo)
 }
 
+moda <- function(v) {
+  freq <- table(v)
+  moda_valor <- as.numeric(names(freq[freq == max(freq)]))
+  return(moda_valor)
+}
+
+# Exemplo de uso de intervalos
 # Dados da questão 4
 intervalos <- matrix(c(
   0, 6,
@@ -110,4 +147,6 @@ resultado$media
 resultado$mediana
 resultado$Q3
 resultado$desvio_padrao
+
+
 
