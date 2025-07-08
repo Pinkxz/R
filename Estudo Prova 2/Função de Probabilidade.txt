@@ -1,0 +1,30 @@
+DEFINIÇÃO DE FUNÇÃO DE PROBABILIDADE
+Uma função de probabilidade é uma função P que associa a cada evento A (subconjunto de um espaço amostral Ω) um número real entre 0 e 1, ou seja,
+P: F(Ω) → [0, 1], respeitando os seguintes axiomas:
+
+P(Ω) = 1
+A probabilidade do espaço total é 1 (algo sempre acontece).
+
+P(A ∪ B) = P(A) + P(B), se A ∩ B = ∅
+Se dois eventos são mutuamente exclusivos, a probabilidade de A ou B ocorrer é a soma das probabilidades.
+
+P(A₁ ∪ A₂ ∪ ... ∪ Aₙ) = P(A₁) + P(A₂) + ... + P(Aₙ), se os eventos forem dois a dois mutuamente exclusivos.
+
+Observação: Para qualquer evento A, temos 0 ≤ P(A) ≤ 1
+
+TEOREMAS DERIVADOS
+Teorema 1 – Se A₁, A₂, ..., Aₙ formam uma partição de Ω (são disjuntos e cobrem todo o espaço), então:
+P(A₁) + P(A₂) + ... + P(Aₙ) = 1
+
+Teorema 2 – A probabilidade do evento impossível é:
+P(∅) = 0
+
+Teorema 3 – A probabilidade de um evento ou seu complemento é:
+P(A) + P(Aᶜ) = 1
+
+Teorema 4 – Para quaisquer dois eventos A e B:
+P(A ∪ B) = P(A) + P(B) − P(A ∩ B)
+
+Corolário – A probabilidade da união é sempre menor ou igual à soma:
+P(A ∪ B) ≤ P(A) + P(B)
+
