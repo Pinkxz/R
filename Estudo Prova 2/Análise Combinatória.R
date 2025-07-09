@@ -41,6 +41,6 @@ combinacao <- function(n, k) {
 }
 
 # Exemplo de uso:
-print(combinacao(5, 3))
+print(combinacao(13, 5))
 
 ############################################
